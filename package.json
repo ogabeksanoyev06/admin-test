@@ -1,0 +1,33 @@
+{
+   "name": "nuxt-app",
+   "private": true,
+   "type": "module",
+   "scripts": {
+      "build": "nuxt build",
+      "dev": "nuxt dev",
+      "generate": "nuxt generate",
+      "preview": "nuxt preview",
+      "postinstall": "nuxt prepare"
+   },
+   "dependencies": {
+      "@ckeditor/ckeditor5-build-classic": "^42.0.1",
+      "@ckeditor/ckeditor5-vue": "^6.0.0",
+      "@nuxt/icon": "^1.1.1",
+      "@radix-icons/vue": "^1.0.0",
+      "@tiptap/starter-kit": "^2.5.5",
+      "@vueuse/core": "^10.11.0",
+      "class-variance-authority": "^0.7.0",
+      "clsx": "^2.1.1",
+      "nuxt": "^3.12.3",
+      "radix-vue": "^1.9.1",
+      "shadcn-nuxt": "^0.10.4",
+      "tailwind-merge": "^2.4.0",
+      "tailwindcss-animate": "^1.0.7",
+      "vue": "latest"
+   },
+   "devDependencies": {
+      "@iconify/vue": "^4.1.2",
+      "@nuxtjs/tailwindcss": "^6.12.1",
+      "typescript": "^5.5.3"
+   }
+}
