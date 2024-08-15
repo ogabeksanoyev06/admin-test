@@ -20,7 +20,7 @@
                Test sinov turini qo'shing
             </Button>
          </ModalTestsAddKind>
-         <ModalTestsAddCategory>
+         <ModalTestAddCategory>
             <Button>
                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
                   <path
@@ -35,8 +35,8 @@
                </svg>
                Test kategoriyasini qo'shing
             </Button>
-         </ModalTestsAddCategory>
-         <ModalTestsAddTypes>
+         </ModalTestAddCategory>
+         <ModalTestAddTypes>
             <Button>
                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
                   <path
@@ -51,7 +51,7 @@
                </svg>
                Test turini qo'shing
             </Button>
-         </ModalTestsAddTypes>
+         </ModalTestAddTypes>
       </div>
       <div class="flex-1 rounded-lg border border-dashed shadow-sm p-4">
          <div class="rounded-lg border">

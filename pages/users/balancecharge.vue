@@ -9,23 +9,21 @@
                <TableHeader>
                   <TableRow>
                      <TableHead> ID</TableHead>
+                     <TableHead> To'lov turi</TableHead>
                      <TableHead>To'lov miqdori</TableHead>
                      <TableHead>Foydalanuvchi</TableHead>
-                     <TableHead>Batafsil</TableHead>
+                     <TableHead>Sana</TableHead>
+                     <TableHead>Status</TableHead>
                   </TableRow>
                </TableHeader>
                <TableBody>
                   <TableRow v-for="(invoice, i) in 10" :key="i">
                      <TableCell class="font-medium">{{ i + 1 }} </TableCell>
+                     <TableCell> Payme </TableCell>
                      <TableCell> {{ formatCurrency(200000) }} </TableCell>
                      <TableCell> Sanoyev Og'abek </TableCell>
-                     <TableCell>
-                        <ModalUsersBalanceCharge>
-                           <Button variant="ghost" size="icon" class="rounded-full h-10 w-10">
-                              <img src="/assets/svg/eye.svg" alt="" class="w-5 h-5" />
-                           </Button>
-                        </ModalUsersBalanceCharge>
-                     </TableCell>
+                     <TableCell> 26-04-2024 15:27:31 </TableCell>
+                     <TableCell> To'lanmagan </TableCell>
                   </TableRow>
                </TableBody>
             </Table>

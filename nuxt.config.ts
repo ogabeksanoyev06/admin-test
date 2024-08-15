@@ -7,8 +7,16 @@ export default defineNuxtConfig({
       layoutTransition: { name: 'layout', mode: 'out-in' }
    },
    css: ['@/assets/styles/main.css'],
-   modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', '@nuxt/icon'],
+   modules: ['@pinia/nuxt', '@nuxtjs/tailwindcss', 'shadcn-nuxt', 'dayjs-nuxt'],
    shadcn: {
       componentDir: './components/ui'
+   },
+   runtimeConfig: {
+      public: {
+         apiBaseUrl: 'https://api.talimpro.uz'
+      }
+   },
+   build: {
+      transpile: ['vue-toastification', '@vuepic/vue-datepicker']
    }
 });

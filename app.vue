@@ -1,6 +1,6 @@
 <template>
    <div>
-      <NuxtLoadingIndicator />
+      <NuxtLoadingIndicator color="hsl(var(--primary))" />
       <NuxtRouteAnnouncer />
       <ConfigProvider :use-id="useIdFunction">
          <NuxtLayout>

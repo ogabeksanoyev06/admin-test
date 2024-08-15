@@ -1,9 +1,5 @@
 <template>
-   <div>
-      <ClientOnly>
-         <Editor />
-      </ClientOnly>
-   </div>
+   <div></div>
 </template>
 
 <script setup></script>

@@ -39,12 +39,12 @@
                      <TableCell> {{ formatCurrency(1000000) }} </TableCell>
                      <TableCell class="flex items-center">
                         <ModalUsersTariffsEdit>
-                           <Button variant="ghost" size="icon" class="rounded-full h-10 w-10">
+                           <Button variant="ghost" size="icon" class="rounded-full">
                               <img src="/assets/svg/eye.svg" alt="" />
                            </Button>
                         </ModalUsersTariffsEdit>
                         <ModalUsersTariffsDelete>
-                           <Button variant="ghost" size="icon" class="rounded-full h-10 w-10">
+                           <Button variant="ghost" size="icon" class="rounded-full">
                               <img src="/assets/svg/trash.svg" alt="" />
                            </Button>
                         </ModalUsersTariffsDelete>
