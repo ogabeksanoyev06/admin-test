@@ -1,5 +1,6 @@
 <script setup>
-import { useTestsStore } from '@/stores/test.js';
+import { useSciencesStore } from '@/stores/sciences.js';
+
 import { useCustomToast } from '@/composables/useCustomToast.js';
 
 const emit = defineEmits(['section-deleted']);
@@ -10,10 +11,10 @@ const props = defineProps({
 
 const { showToast } = useCustomToast();
 
-const testStore = useTestsStore();
+const scienceStore = useSciencesStore();
 
-const { deleteSectionById } = testStore;
-const { loading } = storeToRefs(testStore);
+const { deleteSectionById } = scienceStore;
+const { loading } = storeToRefs(scienceStore);
 
 const isOpen = ref(false);
 

@@ -1,5 +1,5 @@
 <script setup>
-import { useTestsStore } from '@/stores/test.js';
+import { useSciencesStore } from '@/stores/sciences.js';
 import { useCustomToast } from '@/composables/useCustomToast.js';
 
 const emit = defineEmits(['science-deleted']);
@@ -10,10 +10,10 @@ const props = defineProps({
 
 const { showToast } = useCustomToast();
 
-const testStore = useTestsStore();
+const scienceStore = useSciencesStore();
 
-const { deleteScienceById } = testStore;
-const { loading } = storeToRefs(testStore);
+const { deleteScienceById } = scienceStore;
+const { loading } = storeToRefs(scienceStore);
 
 const isOpen = ref(false);
 

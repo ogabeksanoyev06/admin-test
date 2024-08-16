@@ -1,18 +1,18 @@
 <script setup>
-import { reactive, watch } from 'vue';
+import { reactive } from 'vue';
 import { useCustomToast } from '@/composables/useCustomToast.js';
 import { storeToRefs } from 'pinia';
-import { useTestsStore } from '@/stores/test.js';
+import { useSciencesStore } from '@/stores/sciences.js';
 
 const emit = defineEmits(['science-added']);
 
 const { showToast } = useCustomToast();
 
-const testStore = useTestsStore();
+const scienceStore = useSciencesStore();
 
-const { loading } = storeToRefs(testStore);
+const { loading } = storeToRefs(scienceStore);
 
-const { createSciences } = testStore;
+const { createSciences } = scienceStore;
 
 const isOpen = ref(false);
 

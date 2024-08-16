@@ -1,6 +1,6 @@
 <template>
    <div class="fixed border-r top-0 z-30 hidden h-screen w-full shrink-0 md:sticky md:block">
-      <div class="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
+      <div class="flex h-14 items-center px-4 lg:h-[60px] lg:px-6">
          <NuxtLink to="/" class="flex items-center gap-2 font-semibold">
             <svg
                xmlns="http://www.w3.org/2000/svg"
@@ -22,106 +22,53 @@
          </NuxtLink>
       </div>
       <ScrollArea class="h-[calc(100vh-56px)] lg:h-[calc(100vh-60px)]">
-         <nav class="h-full flex flex-col gap-1 text-sm font-medium overflow-y-auto p-1">
-            <NuxtLink to="/schools" class="flex p-3 hover:text-foreground hover:bg-muted border-b rounded"> Maktablar</NuxtLink>
-
+         <nav class="h-full flex flex-col gap-1 text-sm font-medium px-1">
             <Accordion type="single" class="w-full" collapsible v-model="activeItem">
-               <AccordionItem value="users" class="rounded">
-                  <AccordionTrigger class="p-3 hover:bg-muted rounded">Foydalanuvchilar </AccordionTrigger>
+               <AccordionItem value="users" class="space-y-1 border-none">
+                  <AccordionTrigger class="px-4 py-2">Foydalanuvchilar </AccordionTrigger>
                   <AccordionContent class="pb-0">
-                     <NuxtLink to="/" class="flex p-3 hover:text-foreground hover:bg-muted border-b rounded"> Barcha foydalanuvchilar</NuxtLink>
+                     <NuxtLink to="/" class="flex px-4 py-2 hover:bg-muted rounded"> Barcha foydalanuvchilar</NuxtLink>
                   </AccordionContent>
                   <AccordionContent class="pb-0">
-                     <NuxtLink to="/users/teachers" class="flex p-3 hover:text-foreground hover:bg-muted border-b rounded">O'qituvchilar</NuxtLink>
+                     <NuxtLink to="/users/teachers" class="flex px-4 py-2 hover:bg-muted rounded">O'qituvchilar</NuxtLink>
                   </AccordionContent>
                   <AccordionContent class="pb-0">
-                     <NuxtLink to="/users/pupils" class="flex p-3 hover:text-foreground hover:bg-muted rounded"> O'quvchilar</NuxtLink>
-                  </AccordionContent>
-               </AccordionItem>
-               <AccordionItem value="tests">
-                  <AccordionTrigger class="p-3 hover:bg-muted rounded">Testlar</AccordionTrigger>
-                  <AccordionContent class="pb-0">
-                     <NuxtLink to="/tests/sciences" class="flex p-3 hover:text-foreground hover:bg-muted rounded"> Fanlar </NuxtLink>
+                     <NuxtLink to="/users/pupils" class="flex px-4 py-2 hover:bg-muted rounded"> O'quvchilar</NuxtLink>
                   </AccordionContent>
                </AccordionItem>
-               <!--    <AccordionItem value="blog-tests">
-                  <AccordionTrigger class="p-3 hover:bg-muted" :class="{ '!bg-primary !text-accent': activeItem === 'blog-tests' }">Blog testlar</AccordionTrigger>
+               <AccordionItem value="common" class="space-y-1 border-none">
+                  <AccordionTrigger class="px-4 py-2">Umumiy</AccordionTrigger>
                   <AccordionContent class="pb-0">
-                     <NuxtLink to="/tests/blog-test/science" class="flex p-3 hover:text-foreground hover:bg-muted"> Fanlar</NuxtLink>
+                     <NuxtLink to="/tests/sciences" class="flex px-4 py-2 hover:bg-muted rounded"> Fanlar </NuxtLink>
                   </AccordionContent>
                   <AccordionContent class="pb-0">
-                     <NuxtLink to="/tests/blog-test/subject" class="flex p-3 hover:text-foreground hover:bg-muted"> Mavzular</NuxtLink>
-                  </AccordionContent>
-                  <AccordionContent class="pb-0">
-                     <NuxtLink to="/tests/blog-test/totalresult" class="flex p-3 hover:text-foreground hover:bg-muted"> Natijalar</NuxtLink>
-                  </AccordionContent>
-                  <AccordionContent class="pb-0">
-                     <NuxtLink to="/tests/blog-test" class="flex p-3 hover:text-foreground hover:bg-muted"> Testlar</NuxtLink>
+                     <NuxtLink to="/schools" class="flex px-4 py-2 hover:bg-muted rounded"> Maktablar</NuxtLink>
                   </AccordionContent>
                </AccordionItem>
-               <AccordionItem value="dtm-tests">
-                  <AccordionTrigger class="p-3 hover:bg-muted" :class="{ '!bg-primary !text-accent': activeItem === 'dtm-tests' }">DTM testlari</AccordionTrigger>
+               <AccordionItem value="tests" class="space-y-1 border-none">
+                  <AccordionTrigger class="px-4 py-2">Testlar</AccordionTrigger>
                   <AccordionContent class="pb-0">
-                     <NuxtLink to="/" class="flex p-3 hover:text-foreground hover:bg-muted">DTM test fanlari</NuxtLink>
+                     <NuxtLink to="/tests/sciences" class="flex px-4 py-2 hover:bg-muted rounded"> Attestatsiya testlari </NuxtLink>
                   </AccordionContent>
                   <AccordionContent class="pb-0">
-                     <NuxtLink to="/" class="flex p-3 hover:text-foreground hover:bg-muted">DTM test bloglari</NuxtLink>
+                     <NuxtLink to="/schools" class="flex px-4 py-2 hover:bg-muted rounded"> Stajor o'qituvchi testlari</NuxtLink>
                   </AccordionContent>
                   <AccordionContent class="pb-0">
-                     <NuxtLink to="/" class="flex p-3 hover:text-foreground hover:bg-muted"> DTM test variantlari</NuxtLink>
+                     <NuxtLink to="/schools" class="flex px-4 py-2 hover:bg-muted rounded"> Maktab testlari </NuxtLink>
                   </AccordionContent>
                   <AccordionContent class="pb-0">
-                     <NuxtLink to="/" class="flex p-3 hover:text-foreground hover:bg-muted"> DTM testlari</NuxtLink>
+                     <NuxtLink to="/schools" class="flex px-4 py-2 hover:bg-muted rounded"> Blog testlari </NuxtLink>
                   </AccordionContent>
                   <AccordionContent class="pb-0">
-                     <NuxtLink to="/" class="flex p-3 hover:text-foreground hover:bg-muted"> DTM test natijalari</NuxtLink>
-                  </AccordionContent>
-               </AccordionItem>
-               <AccordionItem value="school-tests">
-                  <AccordionTrigger class="p-3 hover:bg-muted" :class="{ '!bg-primary !text-accent': activeItem === 'school-tests' }">Maktab testlari</AccordionTrigger>
-                  <AccordionContent class="pb-0">
-                     <NuxtLink to="/" class="flex p-3 hover:text-foreground hover:bg-muted">Fanlar ro'yxati</NuxtLink>
+                     <NuxtLink to="/schools" class="flex px-4 py-2 hover:bg-muted rounded"> DTM testlari </NuxtLink>
                   </AccordionContent>
                   <AccordionContent class="pb-0">
-                     <NuxtLink to="/" class="flex p-3 hover:text-foreground hover:bg-muted">Sinflar r'yxati</NuxtLink>
+                     <Separator />
                   </AccordionContent>
                   <AccordionContent class="pb-0">
-                     <NuxtLink to="/" class="flex p-3 hover:text-foreground hover:bg-muted">Maktab testlari</NuxtLink>
-                  </AccordionContent>
-                  <AccordionContent class="pb-0">
-                     <NuxtLink to="/" class="flex p-3 hover:text-foreground hover:bg-muted"> Maktab test natijalari</NuxtLink>
+                     <NuxtLink to="/schools" class="flex px-4 py-2 hover:bg-muted rounded"> Testlarni tahrirlash </NuxtLink>
                   </AccordionContent>
                </AccordionItem>
-               <AccordionItem value="common">
-                  <AccordionTrigger class="p-3 hover:bg-muted" :class="{ '!bg-primary !text-accent': activeItem === 'common' }">Umumiy</AccordionTrigger>
-                  <AccordionContent class="pb-0">
-                     <NuxtLink to="/" class="flex p-3 hover:text-foreground hover:bg-muted">Maktablar</NuxtLink>
-                  </AccordionContent>
-                  <AccordionContent class="pb-0">
-                     <NuxtLink to="/" class="flex p-3 hover:text-foreground hover:bg-muted">Tumanlar</NuxtLink>
-                  </AccordionContent>
-                  <AccordionContent class="pb-0">
-                     <NuxtLink to="/" class="flex p-3 hover:text-foreground hover:bg-muted">Viloyatlar</NuxtLink>
-                  </AccordionContent>
-               </AccordionItem>
-               <AccordionItem value="universities">
-                  <AccordionTrigger class="p-3 hover:bg-muted" :class="{ '!bg-primary !text-accent': activeItem === 'universities' }">Universitetlar</AccordionTrigger>
-                  <AccordionContent class="pb-0">
-                     <NuxtLink to="/" class="flex p-3 hover:text-foreground hover:bg-muted"> Ta'lim yo'nalishlari</NuxtLink>
-                  </AccordionContent>
-                  <AccordionContent class="pb-0">
-                     <NuxtLink to="/" class="flex p-3 hover:text-foreground hover:bg-muted"> Universitetlar</NuxtLink>
-                  </AccordionContent>
-               </AccordionItem>
-               <AccordionItem value="references">
-                  <AccordionTrigger class="p-3 hover:bg-muted" :class="{ '!bg-primary !text-accent': activeItem === 'references' }">Ma'lumotnomalar</AccordionTrigger>
-                  <AccordionContent class="pb-0">
-                     <NuxtLink to="/" class="flex p-3 hover:text-foreground hover:bg-muted"> Chegirmalar </NuxtLink>
-                  </AccordionContent>
-                  <AccordionContent class="pb-0">
-                     <NuxtLink to="/schools" class="flex p-3 hover:text-foreground hover:bg-muted"> Maktablar ro'yxati </NuxtLink>
-                  </AccordionContent>
-               </AccordionItem> -->
             </Accordion>
          </nav>
       </ScrollArea>
@@ -134,6 +81,6 @@ const activeItem = ref(null);
 
 <style scoped>
 nav .router-link-active {
-   @apply bg-primary text-accent;
+   @apply bg-secondary;
 }
 </style>

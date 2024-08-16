@@ -45,14 +45,14 @@
 
 <script setup>
 import { useRoute } from 'vue-router';
-import { useTestsStore } from '@/stores/test.js';
+import { useSciencesStore } from '@/stores/sciences.js';
 
 const route = useRoute();
-const testStore = useTestsStore();
+const scienceStore = useSciencesStore();
 
 const scienceId = route.params.scienceId;
 
-const { getSectionById } = testStore;
+const { getSectionByScienceId } = scienceStore;
 
 const handleAddSection = async () => {
    await refresh();
@@ -67,6 +67,6 @@ const handleUpdateSection = async () => {
 };
 
 const { data: sections, refresh } = await useAsyncData('sections', async () => {
-   return await getSectionById(scienceId);
+   return await getSectionByScienceId(scienceId);
 });
 </script>

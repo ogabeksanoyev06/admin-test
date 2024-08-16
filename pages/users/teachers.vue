@@ -1,10 +1,11 @@
 <template>
    <div class="flex flex-1 flex-col gap-4">
       <div class="flex items-center">
-         <h1 class="text-lg font-semibold md:text-2xl">O'quvchilar</h1>
+         <h1 class="text-lg font-semibold md:text-2xl">O'qituvchilar</h1>
       </div>
       <div class="flex-1 rounded-lg border border-dashed shadow-sm p-4">
          <div class="rounded-lg border">
+            {{ teachers }}
             <Table>
                <TableHeader>
                   <TableRow>

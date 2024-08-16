@@ -2,7 +2,7 @@
 import { reactive, watch } from 'vue';
 import { useCustomToast } from '@/composables/useCustomToast.js';
 import { storeToRefs } from 'pinia';
-import { useTestsStore } from '@/stores/test.js';
+import { useSciencesStore } from '@/stores/sciences.js';
 
 const emit = defineEmits(['section-updated']);
 
@@ -13,11 +13,11 @@ const props = defineProps({
 
 const { showToast } = useCustomToast();
 
-const testStore = useTestsStore();
+const scienceStore = useSciencesStore();
 
-const { loading } = storeToRefs(testStore);
+const { loading } = storeToRefs(scienceStore);
 
-const { updateSectionById, getSectionById } = testStore;
+const { updateSectionById, getSectionById } = scienceStore;
 
 const isOpen = ref(false);
 
@@ -29,11 +29,12 @@ const form = reactive({
 
 const sectionById = async () => {
    try {
-      const scienceId = await getSectionById(props.scienceId);
-      if (scienceId.status === 'success') {
-         form.name_uz = scienceId.data.name_uz;
-         form.name_ru = scienceId.data.name_ru;
-         form.name_en = scienceId.data.name_en;
+      const sectionId = await getSectionById(props.sectionId);
+      console.log(sectionId);
+      if (sectionId.status === 'success') {
+         form.name_uz = sectionId.data.name_uz;
+         form.name_ru = sectionId.data.name_ru;
+         form.name_en = sectionId.data.name_en;
       }
    } catch (error) {
       console.log(error);
@@ -68,7 +69,7 @@ const handleSubmitForm = async () => {
    <div>
       <Dialog v-model:open="isOpen">
          <DialogTrigger as-child>
-            <Button variant="ghost" size="icon" class="rounded-full hover:bg-primary/10">
+            <Button @click="sectionById" variant="ghost" size="icon" class="rounded-full hover:bg-primary/10">
                <svg class="w-5 h-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
                      d="M11 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22H15C20 22 22 20 22 15V13"

@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { useApi } from '@/composables/useApi';
 
-export const useTestsStore = defineStore('tests', () => {
+export const useSciencesStore = defineStore('sciences', () => {
    const api = useApi();
    const loading = ref(false);
 
