@@ -2,9 +2,9 @@
    <div>
       <div class="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
          <LayoutSidebar />
-         <div class="flex flex-col">
+         <div class="flex flex-col w-full">
             <LayoutHeader />
-            <main class="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
+            <main class="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6 w-full relative">
                <slot />
             </main>
          </div>

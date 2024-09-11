@@ -4,13 +4,29 @@ html {
 }
 
 body {
-   font-family: 'Montserrat', sans-serif;
+   font-family: 'Poppins', sans-serif;
    font-weight: 400;
    font-size: 14px;
    -webkit-font-smoothing: antialiased;
    text-rendering: optimizeLegibility;
    overflow-x: hidden;
 }
+
+.katex-display {
+   overflow: auto hidden !important;
+}
+
+.katex-display > .katex {
+   white-space: normal !important;
+ }
+
+/* .katex * {
+   font-family: 'Poppins', sans-serif !important;
+} */
+
+/* .katex-mathml {
+   font-family: 'Poppins', sans-serif !important;
+} */
 
 *::-webkit-scrollbar {
    width: 6px;

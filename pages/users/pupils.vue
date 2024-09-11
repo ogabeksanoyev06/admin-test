@@ -13,7 +13,7 @@
                      <TableHead> Sinf</TableHead>
                      <TableHead>Yaratilgan</TableHead>
                      <TableHead>O'zgartirilgan</TableHead>
-                     <TableHead>Parol</TableHead>
+                     <TableHead>Login</TableHead>
                   </TableRow>
                </TableHeader>
                <TableBody>

@@ -85,7 +85,7 @@ export const useSchoolsStore = defineStore('schools', () => {
          });
          return response.data;
       } catch (error) {
-         console.log(error);
+         throw new Error();
       } finally {
          loading.value = false;
       }

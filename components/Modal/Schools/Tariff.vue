@@ -1,6 +1,7 @@
 <script setup>
 import { reactive } from 'vue';
 import { useSchoolsStore } from '@/stores/schools.js';
+import { useCustomToast } from '@/composables/useCustomToast.js';
 
 const props = defineProps({
    schoolId: {
@@ -10,6 +11,8 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['school-added']);
+
+const { showToast } = useCustomToast();
 
 const schoolsStore = useSchoolsStore();
 
@@ -40,9 +43,11 @@ const handleSubmitForm = async () => {
             formattedTariffTime.value = '';
             tariffTime.value = null;
          }
+         console.log(data)
       }
    } catch (error) {
-      console.error(error);
+      showToast(error.response, 'error');
+      console.error('Error adding permission school:', error);
    }
 };
 
@@ -62,7 +67,7 @@ const schoolById = async () => {
 };
 
 watch(tariffTime, (newValue) => {
-   formattedTariffTime.value = newValue ? newValue.toISOString() : '';
+   formattedTariffTime.value = newValue ? newValue.valueOf() : '';
 });
 </script>
 
@@ -98,6 +103,7 @@ watch(tariffTime, (newValue) => {
             </DialogHeader>
 
             <VForm @submit="handleSubmitForm" v-slot="{ errors }">
+               {{ formattedTariffTime }}
                <div class="flex flex-col gap-4 mt-4">
                   <div class="flex flex-col gap-2">
                      <VField name="type" rules="required" v-model="tariffTime">

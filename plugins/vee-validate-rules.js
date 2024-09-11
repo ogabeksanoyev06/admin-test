@@ -56,6 +56,13 @@ export default defineNuxtPlugin(() => {
       return true;
    });
 
+   defineRule('requiredArray', (value) => {
+      if (!Array.isArray(value) || value.length === 0) {
+         return 'Maydon uchun kamida bitta element tanlanishi kerak!';
+      }
+      return true;
+   });
+
    defineRule('passwordformat', (value) => {
       if (!value || !value.length) {
          return true;

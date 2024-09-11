@@ -88,7 +88,7 @@ module.exports = {
             'collapsible-up': 'collapsible-up 0.2s ease-in-out'
          },
          boxShadow: {
-            custom: '0 .25rem 1.125rem rgba(75,70,92,.1)'
+            custom: '0 .25rem 1.125rem rgba(75,70,92,.1)',
          }
       }
    },

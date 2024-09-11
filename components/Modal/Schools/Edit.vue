@@ -44,6 +44,7 @@ const schoolById = async () => {
       const schoolId = await getSchoolById(props.schoolId);
       if (schoolId.status === 'success') {
          form.region = schoolId.data.region;
+         form.district = schoolId.data.district;
          form.number = schoolId.data.number;
          form.type = schoolId.data.type;
       } else {

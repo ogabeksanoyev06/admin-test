@@ -1,7 +1,7 @@
 <template>
    <div class="flex flex-1 flex-col gap-4">
       <div class="flex items-center justify-between">
-         <h1 class="text-lg font-semibold md:text-2xl">Mavzular ro'yxati</h1>
+         <h1 class="text-lg font-medium md:text-2xl">Mavzular ro'yxati</h1>
          <ModalTestSubjectCreate :sectionId="sectionId" @subject-added="handleAddSubject" />
       </div>
       <div class="flex-1 rounded-lg border border-dashed shadow-sm p-4">

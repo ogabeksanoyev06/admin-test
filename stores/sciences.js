@@ -23,7 +23,7 @@ export const useSciencesStore = defineStore('sciences', () => {
       try {
          loading.value = true;
          const response = await api.get('/api/superadmin/tests/subjects');
-         return response.data.data;
+         return response.data;
       } catch (error) {
          console.log(error);
       } finally {
@@ -85,7 +85,7 @@ export const useSciencesStore = defineStore('sciences', () => {
       try {
          loading.value = true;
          const response = await api.get('/api/superadmin/tests/theme');
-         return response.data.data;
+         return response.data;
       } catch (error) {
          console.log(error);
       } finally {
@@ -97,18 +97,6 @@ export const useSciencesStore = defineStore('sciences', () => {
       try {
          loading.value = true;
          const response = await api.get(`/api/superadmin/tests/themes/${id}`);
-         return response.data;
-      } catch (error) {
-         console.log(error);
-      } finally {
-         loading.value = false;
-      }
-   };
-
-   const getSubjectById = async (id) => {
-      try {
-         loading.value = true;
-         const response = await api.get(`/api/superadmin/tests/theme/${id}`);
          return response.data;
       } catch (error) {
          console.log(error);
@@ -159,7 +147,7 @@ export const useSciencesStore = defineStore('sciences', () => {
       try {
          loading.value = true;
          const response = await api.get('/api/superadmin/tests/parts');
-         return response.data.data;
+         return response.data;
       } catch (error) {
          console.log(error);
       } finally {
@@ -171,7 +159,7 @@ export const useSciencesStore = defineStore('sciences', () => {
       try {
          loading.value = true;
          const response = await api.get(`/api/superadmin/tests/parts/${id}`);
-         return response.data.data;
+         return response.data;
       } catch (error) {
          console.log(error);
       } finally {
@@ -228,7 +216,6 @@ export const useSciencesStore = defineStore('sciences', () => {
       getSubjectSectionById,
       deleteSubjectById,
       updateSubjectById,
-      getSubjectById,
 
       createSections,
       getSections,

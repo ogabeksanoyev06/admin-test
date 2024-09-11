@@ -1,7 +1,7 @@
 <template>
    <div class="flex flex-1 flex-col gap-4">
       <div class="flex items-center justify-between">
-         <h1 class="text-lg font-semibold md:text-2xl">Bo'limlar ro'yxati</h1>
+         <h1 class="text-lg font-medium md:text-2xl">Bo'limlar ro'yxati</h1>
          <ModalTestUnitCreate :scienceId="scienceId" @section-added="handleAddSection" />
       </div>
 
@@ -19,7 +19,7 @@
                   </TableRow>
                </TableHeader>
                <TableBody>
-                  <TableRow v-for="(item, i) in sections" :key="i" class="odd:bg-muted/50">
+                  <TableRow v-for="(item, i) in sections.data" :key="i" class="odd:bg-muted/50">
                      <TableCell class="font-medium">{{ i + 1 }} </TableCell>
                      <TableCell class="font-medium">
                         {{ item.subject?.name_uz }}

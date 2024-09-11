@@ -7,7 +7,13 @@ export default defineNuxtConfig({
       layoutTransition: { name: 'layout', mode: 'out-in' }
    },
    css: ['@/assets/styles/main.css'],
-   modules: ['@pinia/nuxt', '@nuxtjs/tailwindcss', 'shadcn-nuxt', 'dayjs-nuxt'],
+   modules: ['@pinia/nuxt', '@nuxtjs/tailwindcss', 'shadcn-nuxt', 'dayjs-nuxt', '@nuxtjs/i18n', '@nuxt/image'],
+   i18n: {
+      strategy: 'prefix_except_default',
+      locales: ['uz', 'uzc', 'en', 'ru', 'kz'],
+      defaultLocale: 'ru',
+      vueI18n: './i18n.config.ts'
+   },
    shadcn: {
       componentDir: './components/ui'
    },

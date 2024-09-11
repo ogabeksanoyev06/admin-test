@@ -1,7 +1,7 @@
 <template>
-   <div class="flex flex-1 flex-col gap-4">
+   <div class="flex flex-1 flex-col gap-4 w-full">
       <div class="flex items-center justify-between">
-         <h1 class="text-lg font-semibold md:text-2xl">Maktablar</h1>
+         <h1 class="text-lg font-medium md:text-2xl">Maktablar</h1>
          <ModalSchoolsCreate @school-added="handleAddSchool" />
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
@@ -18,8 +18,8 @@
             </SelectContent>
          </Select>
       </div>
-      <div class="flex-1 rounded-lg border border-dashed shadow-sm p-4">
-         <div class="rounded-lg border">
+      <div class="flex-1 rounded-lg border border-dashed shadow-sm p-4 w-full">
+         <div class="rounded-lg border w-full">
             <Table>
                <TableHeader>
                   <TableRow>
@@ -30,9 +30,9 @@
                      <TableHead>Viloyat</TableHead>
                      <TableHead>Tuman</TableHead>
                      <TableHead> Maktab </TableHead>
-                     <TableHead> Parol </TableHead>
-                     <TableHead> O'zgartirilgan </TableHead>
+                     <TableHead> Login </TableHead>
                      <TableHead> Yaratilgan </TableHead>
+                     <TableHead> Tarif muddati </TableHead>
                      <TableHead> Amaliyotlar </TableHead>
                   </TableRow>
                </TableHeader>
@@ -50,9 +50,9 @@
                      <TableCell>
                         <NuxtLink to="/" class="text-primary">{{ item.login }}</NuxtLink>
                      </TableCell>
-                     <TableCell> {{ $dayjs(item.updatedAt).format('DD.MM.YYYY HH:mm:ss') }} </TableCell>
                      <TableCell>{{ $dayjs(item.createdAt).format('DD.MM.YYYY HH:mm:ss') }} </TableCell>
-                     <TableCell class="flex flex-wrap gap-2">
+                     <TableCell>{{ item.tarif ? $dayjs(item.tarif).format('DD.MM.YYYY HH:mm:ss') : 'biriktirilmagan' }} </TableCell>
+                     <TableCell class="flex gap-2">
                         <ModalSchoolsEdit :schoolId="item._id" @school-added="handleUpdateSchool" />
                         <ModalSchoolsDelete :schoolId="item._id" @school-deleted="handleDeleteSchool" />
                         <ModalSchoolsTariff :schoolId="item._id" @tariff-created="handleTariffCreated" />

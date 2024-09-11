@@ -1,7 +1,7 @@
 <template>
    <div class="flex flex-1 flex-col gap-4">
       <div class="flex items-center justify-between">
-         <h1 class="text-lg font-semibold md:text-2xl">Blog test fanlari</h1>
+         <h1 class="text-lg font-medium md:text-2xl">Blog test fanlari</h1>
          <Button>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
                <path
