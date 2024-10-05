@@ -7,7 +7,7 @@
          <VForm @submit="handleSubmitForm" v-slot="{ errors }">
             <div class="grid items-start grid-cols-12 gap-4">
                <div class="grid gap-2 col-span-12">
-                  <VField name="mathView">
+                  <VField name="questions" rules="required" v-model="text">
                      <Label class="flex items-center justify-between">
                         Savollarni kiriting
                         <div class="flex items-center space-x-2">
@@ -15,11 +15,10 @@
                            <Label for="mathView">Matematik ko'rish</Label>
                         </div>
                      </Label>
-                     <VField name="questions" rules="required" v-model="text">
-                        <Textarea
-                           size="3"
-                           class="min-h-[400px]"
-                           placeholder="Question 1
+                     <Textarea
+                        size="3"
+                        class="min-h-[400px]"
+                        placeholder="Question 1
  ====
  Variant 1
  ====
@@ -30,9 +29,8 @@
  Variant 4
  ++++
  Question 2"
-                           v-model="text"
-                        />
-                     </VField>
+                        v-model="text"
+                     />
                      <code> Savollar togri ekanini tekshirish uchun Matematik ko'rishni yoqing </code>
                      <span class="text-sm text-destructive font-medium">{{ errors.questions }}</span>
                   </VField>
@@ -101,13 +99,24 @@ const errorQuestion = ref('');
 
 const toggleMathView = () => {
    if (mathView.value) {
-      rawTests.questions = prepareQuestions(prepareMathView(text.value));
+      try {
+         rawTests.questions = prepareQuestions(prepareMathView(text.value));
+      } catch (error) {
+         errorQuestion.value = error.message;
+         rawTests.questions = [];
+      }
    } else {
       rawTests.questions = [];
    }
 };
 
 const handleSubmitForm = async () => {
+   if (!text.value.trim()) {
+      errorQuestion.value = 'Iltimos, savollarni kiritib oling.';
+      showToast('Savol kiritilmagan', 'error');
+      return;
+   }
+
    try {
       const testData = {
          test_type: route.params.slug,
@@ -126,8 +135,6 @@ const handleSubmitForm = async () => {
       if (error.response && error.response.data) {
          const errorMessage = error.response.data.error || 'Nomalum xato';
          showToast(`${errorMessage}`, 'error');
-      } else {
-         showToast(`Test yaratishda xato: ${error.message}`, 'error');
       }
    }
 };
