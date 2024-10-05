@@ -43,6 +43,18 @@ export const useSciencesStore = defineStore('sciences', () => {
       }
    };
 
+   const getScienceTestTypesById = async (id) => {
+      try {
+         loading.value = true;
+         const response = await api.get(`/api/superadmin/tests/types/subjects/${id}`);
+         return response.data;
+      } catch (error) {
+         console.log(error);
+      } finally {
+         loading.value = false;
+      }
+   };
+
    const deleteScienceById = async (id) => {
       try {
          loading.value = true;
@@ -67,69 +79,7 @@ export const useSciencesStore = defineStore('sciences', () => {
       }
    };
 
-   //    subject
-
-   const createSubjects = async (data) => {
-      try {
-         loading.value = true;
-         const response = await api.post('/api/superadmin/tests/theme', data);
-         return response.data;
-      } catch (error) {
-         console.log(error);
-      } finally {
-         loading.value = false;
-      }
-   };
-
-   const getSubjects = async () => {
-      try {
-         loading.value = true;
-         const response = await api.get('/api/superadmin/tests/theme');
-         return response.data;
-      } catch (error) {
-         console.log(error);
-      } finally {
-         loading.value = false;
-      }
-   };
-
-   const getSubjectSectionById = async (id) => {
-      try {
-         loading.value = true;
-         const response = await api.get(`/api/superadmin/tests/themes/${id}`);
-         return response.data;
-      } catch (error) {
-         console.log(error);
-      } finally {
-         loading.value = false;
-      }
-   };
-
-   const deleteSubjectById = async (id) => {
-      try {
-         loading.value = true;
-         const response = await api.delete(`/api/superadmin/tests/theme/${id}`);
-         return response.data;
-      } catch (error) {
-         console.log(error);
-      } finally {
-         loading.value = false;
-      }
-   };
-
-   const updateSubjectById = async (id, data) => {
-      try {
-         loading.value = true;
-         const response = await api.put(`/api/superadmin/tests/theme/${id}`, data);
-         return response.data;
-      } catch (error) {
-         console.log(error);
-      } finally {
-         loading.value = false;
-      }
-   };
-
-   //    section
+   //    parts or sections
 
    const createSections = async (data) => {
       try {
@@ -203,6 +153,68 @@ export const useSciencesStore = defineStore('sciences', () => {
       }
    };
 
+   //    subject
+
+   const createSubjects = async (data) => {
+      try {
+         loading.value = true;
+         const response = await api.post('/api/superadmin/tests/theme', data);
+         return response.data;
+      } catch (error) {
+         console.log(error);
+      } finally {
+         loading.value = false;
+      }
+   };
+
+   const getSubjects = async () => {
+      try {
+         loading.value = true;
+         const response = await api.get('/api/superadmin/tests/theme');
+         return response.data;
+      } catch (error) {
+         console.log(error);
+      } finally {
+         loading.value = false;
+      }
+   };
+
+   const getSubjectSectionById = async (id) => {
+      try {
+         loading.value = true;
+         const response = await api.get(`/api/superadmin/tests/themes/${id}`);
+         return response.data;
+      } catch (error) {
+         console.log(error);
+      } finally {
+         loading.value = false;
+      }
+   };
+
+   const deleteSubjectById = async (id) => {
+      try {
+         loading.value = true;
+         const response = await api.delete(`/api/superadmin/tests/theme/${id}`);
+         return response.data;
+      } catch (error) {
+         console.log(error);
+      } finally {
+         loading.value = false;
+      }
+   };
+
+   const updateSubjectById = async (id, data) => {
+      try {
+         loading.value = true;
+         const response = await api.put(`/api/superadmin/tests/theme/${id}`, data);
+         return response.data;
+      } catch (error) {
+         console.log(error);
+      } finally {
+         loading.value = false;
+      }
+   };
+
    return {
       loading,
       createSciences,
@@ -210,6 +222,7 @@ export const useSciencesStore = defineStore('sciences', () => {
       getScienceById,
       deleteScienceById,
       updateScienceById,
+      getScienceTestTypesById,
 
       createSubjects,
       getSubjects,

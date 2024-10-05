@@ -18,15 +18,17 @@ body {
 
 .katex-display > .katex {
    white-space: normal !important;
- }
+}
 
-/* .katex * {
+.katex * {
    font-family: 'Poppins', sans-serif !important;
-} */
+   font-weight: 400 !important;
+}
 
-/* .katex-mathml {
+.katex-mathml {
    font-family: 'Poppins', sans-serif !important;
-} */
+   font-style: normal !important;
+}
 
 *::-webkit-scrollbar {
    width: 6px;

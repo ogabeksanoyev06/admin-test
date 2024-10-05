@@ -7,7 +7,7 @@ import { useTestsStore } from '@/stores/test.js';
 const emit = defineEmits(['testType-updated']);
 
 const props = defineProps({
-   testTypeId: String
+   testTypeId: Number
 });
 
 const { showToast } = useCustomToast();

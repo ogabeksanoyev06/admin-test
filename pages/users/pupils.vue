@@ -47,7 +47,7 @@ const fullName = (item) => {
    return `${item.name} ${item.surname} ${item.father_name}`;
 };
 const fullNameClass = (item) => {
-   return `${item.number} ${item.letter}`;
+   return `${item.number}${item.letter}`;
 };
 
 const { data: pupils } = await useAsyncData('pupils', async () => {

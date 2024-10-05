@@ -4,7 +4,6 @@ import { useCustomToast } from '@/composables/useCustomToast.js';
 import { storeToRefs } from 'pinia';
 import { useSciencesStore } from '@/stores/sciences.js';
 
-
 const emit = defineEmits(['section-added']);
 
 const props = defineProps({
@@ -31,8 +30,8 @@ const handleSubmitForm = async () => {
    try {
       const response = await createSections({
          name_uz: form.name_uz,
-         name_ru: form.name_ru,
-         name_en: form.name_en,
+         name_ru: form.name_uz,
+         name_en: form.name_uz,
          subject: props.scienceId
       });
       if (response.status === 'success') {
@@ -82,17 +81,17 @@ const handleSubmitForm = async () => {
                      </VField>
                   </div>
                   <div class="grid gap-2">
-                     <VField name="name_ru" rules="required" v-model="form.name_ru">
+                     <VField name="name_ru" rules="required" v-model="form.name_uz">
                         <Label for="name_ru">Bo'lim nomi ruscha</Label>
-                        <Input v-model="form.name_ru" id="name_ru" type="text" placeholder="Bo'lim ru" />
-                        <span class="text-sm text-destructive font-medium">{{ errors.name_ru }}</span>
+                        <Input v-model="form.name_uz" id="name_ru" type="text" placeholder="Bo'lim ru" />
+                        <span class="text-sm text-destructive font-medium">{{ errors.name_uz }}</span>
                      </VField>
                   </div>
                   <div class="grid gap-2">
-                     <VField name="name_en" rules="required" v-model="form.name_en">
+                     <VField name="name_en" rules="required" v-model="form.name_uz">
                         <Label for="name_en">Bo'lim nomi inglizcha</Label>
-                        <Input v-model="form.name_en" id="name_en" type="text" placeholder="Bo'lim en" />
-                        <span class="text-sm text-destructive font-medium">{{ errors.name_en }}</span>
+                        <Input v-model="form.name_uz" id="name_en" type="text" placeholder="Bo'lim en" />
+                        <span class="text-sm text-destructive font-medium">{{ errors.name_uz }}</span>
                      </VField>
                   </div>
                </div>

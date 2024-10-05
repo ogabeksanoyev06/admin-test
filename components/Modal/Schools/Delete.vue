@@ -21,14 +21,12 @@ const confirmDelete = async () => {
    try {
       const response = await deleteSchoolById(props.schoolId);
       if (response?.status === 'success') {
-         showToast("Maktab muvaffaqiyatli o'chirildi!", 'success');
+         showToast("Maktab muvaffaqiyatli o'chirildi.", 'success');
          emit('school-deleted');
          isOpen.value = false;
-      } else {
-         showToast("Maktab o'chirishda xatolik yuz berdi!", 'error');
       }
    } catch (error) {
-      showToast("Maktab o'chirishda xatolik yuz berdi!", 'error');
+      showToast("Maktab o'chirishda xatolik yuz berdi.", 'error');
    }
 };
 </script>

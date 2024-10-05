@@ -11,3 +11,16 @@
       </div>
    </div>
 </template>
+
+<script setup>
+import { useTranslationsStore } from '@/stores/translations.js';
+
+const translationsStore = useTranslationsStore();
+
+const { getTranslations } = translationsStore;
+
+// const { data } = await useAsyncData('layout', async () => {
+//    const [translations] = await Promise.all([getTranslations()]);
+//    return { translations };
+// });
+</script>

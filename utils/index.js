@@ -1,8 +1,35 @@
+export function clearSpaces(text) {
+   return text.replaceAll(' ', '');
+}
+
+// Function to format currency
+export function formatCurrency(amount) {
+   return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+}
+
+// Function to format phone numbers
+export function formatPhone(phone) {
+   if (!phone) return '';
+   const numericString = phone.replace(/\D/g, '');
+   let formattedString = '';
+   if (numericString.length === 12) {
+      formattedString = numericString.replace(/(\d{3})(\d{2})(\d{3})(\d{2})(\d{2})/, '+$1 $2 $3 $4 $5');
+   } else if (numericString.length === 10) {
+      formattedString = numericString.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+   } else if (numericString.length === 7) {
+      formattedString = numericString.replace(/(\d{3})(\d{4})/, '$1-$2');
+   } else {
+      formattedString = phone;
+   }
+   return formattedString;
+}
+
+//
+
 export function prepareQuestions(text) {
    if (!text || typeof text !== 'string') {
       throw new Error("Kirish matni bo'sh yoki noto'g'ri.");
    }
-
    const questions = text
       .trim()
       .split('++++')
@@ -55,4 +82,18 @@ export function prepareQuestions(text) {
       });
 
    return questions;
+}
+
+//
+export function prepareMathView(string) {
+   if (string) {
+      return string
+         .replace(/\$\$(.*?)\$\$/gs, (match) => {
+            // Matematik formulani o'z holida saqlash
+            return match;
+         })
+         .replace(/\\item\s*/g, '') // \item belgilarini olib tashlash
+         .replace(/\\\\/g, ''); // \\ belgilarini olib tashlash
+   }
+   return '';
 }

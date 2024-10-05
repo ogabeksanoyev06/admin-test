@@ -7,7 +7,7 @@ import { useSciencesStore } from '@/stores/sciences.js';
 const emit = defineEmits(['subject-added']);
 
 const props = defineProps({
-   sectionId: String
+   partId: String
 });
 
 const { showToast } = useCustomToast();
@@ -30,9 +30,9 @@ const handleSubmitForm = async () => {
    try {
       const response = await createSubjects({
          name_uz: form.name_uz,
-         name_ru: form.name_ru,
-         name_en: form.name_en,
-         part: props.sectionId
+         name_ru: form.name_uz,
+         name_en: form.name_uz,
+         part: props.partId
       });
       if (response.status === 'success') {
          emit('subject-added');
@@ -81,17 +81,17 @@ const handleSubmitForm = async () => {
                      </VField>
                   </div>
                   <div class="grid gap-2">
-                     <VField name="name_ru" rules="required" v-model="form.name_ru">
+                     <VField name="name_ru" rules="required" v-model="form.name_uz">
                         <Label for="name_ru">Mavzu nomi ruscha</Label>
-                        <Input v-model="form.name_ru" id="name_ru" type="text" placeholder="Mavzu ru" />
-                        <span class="text-sm text-destructive font-medium">{{ errors.name_ru }}</span>
+                        <Input v-model="form.name_uz" id="name_ru" type="text" placeholder="Mavzu ru" />
+                        <span class="text-sm text-destructive font-medium">{{ errors.name_uz }}</span>
                      </VField>
                   </div>
                   <div class="grid gap-2">
-                     <VField name="name_en" rules="required" v-model="form.name_en">
+                     <VField name="name_en" rules="required" v-model="form.name_uz">
                         <Label for="name_en">Mavzu nomi inglizcha</Label>
-                        <Input v-model="form.name_en" id="name_en" type="text" placeholder="Mavzu en" />
-                        <span class="text-sm text-destructive font-medium">{{ errors.name_en }}</span>
+                        <Input v-model="form.name_uz" id="name_en" type="text" placeholder="Mavzu en" />
+                        <span class="text-sm text-destructive font-medium">{{ errors.name_uz }}</span>
                      </VField>
                   </div>
                </div>

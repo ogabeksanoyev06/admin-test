@@ -8,31 +8,19 @@ export const useTranslationsStore = defineStore('translations', () => {
    const translations = ref({});
 
    const AddOrUpdateTranslations = async (lang, data) => {
-      try {
-         const response = await api.post(`/api/translations/${lang}`, data);
-         return response.data;
-      } catch (error) {
-         console.log(error);
-      }
+      const response = await api.post(`/api/translations/${lang}`, data);
+      return response.data;
    };
 
-   const getTranslations = async () => {
-      try {
-         const response = await api.get(`/api/translations/${locale.value}`);
-         translations.value = response.data;
-         return response.data;
-      } catch (error) {
-         console.log(error);
-      }
+   const getTranslations = async (lang) => {
+      const response = await api.get(`/api/translations/${lang}`);
+      translations.value = response.data;
+      return response.data;
    };
 
-   const deleteLanguageObject = async () => {
-      try {
-         const response = await api.get(`/api/translations/${locale.value}`);
-         return response.data;
-      } catch (error) {
-         console.log(error);
-      }
+   const deleteLanguageObject = async (lang, object_key) => {
+      const response = await api.delete(`/api/translations/${lang}/${object_key}`);
+      return response.data;
    };
 
    return {

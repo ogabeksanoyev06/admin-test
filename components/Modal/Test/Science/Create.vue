@@ -4,6 +4,10 @@ import { useCustomToast } from '@/composables/useCustomToast.js';
 import { storeToRefs } from 'pinia';
 import { useSciencesStore } from '@/stores/sciences.js';
 
+const props = defineProps({
+   test_type: String
+});
+
 const emit = defineEmits(['science-added']);
 
 const { showToast } = useCustomToast();
@@ -19,16 +23,20 @@ const isOpen = ref(false);
 const form = reactive({
    name_uz: '',
    name_ru: '',
-   name_en: ''
+   name_en: '',
+   test_type: props.test_type
 });
 
 const handleSubmitForm = async () => {
    try {
-      const response = await createSciences(form);
+      const response = await createSciences({
+         name_uz: form.name_uz,
+         name_en: form.name_uz,
+         name_ru: form.name_uz,
+         test_type: form.test_type
+      });
       if (response.status === 'success') {
          emit('science-added');
-         form.name_en = '';
-         form.name_ru = '';
          form.name_uz = '';
          isOpen.value = false;
          showToast("Fan muvaffaqiyatli qo'shildi!", 'success');
@@ -72,17 +80,17 @@ const handleSubmitForm = async () => {
                      </VField>
                   </div>
                   <div class="grid gap-2">
-                     <VField name="name_ru" rules="required" v-model="form.name_ru">
+                     <VField name="name_ru" rules="required" v-model="form.name_uz">
                         <Label for="name_ru">Fan nomi ruscha</Label>
-                        <Input v-model="form.name_ru" id="name_ru" type="text" placeholder="Fan ru" />
-                        <span class="text-sm text-destructive font-medium">{{ errors.name_ru }}</span>
+                        <Input v-model="form.name_uz" id="name_ru" type="text" placeholder="Fan ru" />
+                        <span class="text-sm text-destructive font-medium">{{ errors.name_uz }}</span>
                      </VField>
                   </div>
                   <div class="grid gap-2">
-                     <VField name="name_en" rules="required" v-model="form.name_en">
+                     <VField name="name_en" rules="required" v-model="form.name_uz">
                         <Label for="name_en">Fan nomi inglizcha</Label>
-                        <Input v-model="form.name_en" id="name_en" type="text" placeholder="Fan en" />
-                        <span class="text-sm text-destructive font-medium">{{ errors.name_en }}</span>
+                        <Input v-model="form.name_uz" id="name_en" type="text" placeholder="Fan en" />
+                        <span class="text-sm text-destructive font-medium">{{ errors.name_uz }}</span>
                      </VField>
                   </div>
                </div>

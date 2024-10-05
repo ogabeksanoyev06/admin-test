@@ -5,7 +5,6 @@
       </div>
       <div class="flex-1 rounded-lg border border-dashed shadow-sm p-4">
          <div class="rounded-lg border">
-            {{ teachers }}
             <Table>
                <TableHeader>
                   <TableRow>

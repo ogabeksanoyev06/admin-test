@@ -27,7 +27,11 @@ const form = reactive({
    title_ru: '',
    title_en: '',
    photo_url: 'https://cdn.talimpro.uz/43cf0da0-62aa-11ef-849f-e379d8ea36c6.png',
-   user_types: []
+   user_types: [],
+   test_type: '',
+   duration: 0,
+   questions_count: 0,
+   status: true
 });
 
 const handleChange = (itemId, checked) => {
@@ -46,13 +50,25 @@ const handleChange = (itemId, checked) => {
 const handleSubmitForm = async () => {
    try {
       const response = await createTestTypes({
-         ...form
+         title_uz: form.title_uz,
+         title_ru: form.title_uz,
+         title_en: form.title_uz,
+         photo_url: 'https://cdn.talimpro.uz/43cf0da0-62aa-11ef-849f-e379d8ea36c6.png',
+         user_types: form.user_types,
+         test_type: form.test_type,
+         duration: form.duration,
+         questions_count: form.questions_count,
+         status: form.status
       });
       if (response.status === 'success') {
          emit('testTypes-added');
          form.title_en = '';
          form.title_ru = '';
          form.title_uz = '';
+         form.user_types = [];
+         form.test_type = '';
+         form.questions_count = 0;
+         form.duration = 0;
          isOpen.value = false;
          showToast("Test turi muvaffaqiyatli qo'shildi!", 'success');
       } else {
@@ -81,34 +97,81 @@ const handleSubmitForm = async () => {
                </svg>
             </Button>
          </DialogTrigger>
-         <DialogContent class="p-6 max-w-[600px]">
+         <DialogContent class="p-6 max-w-[900px]">
             <DialogHeader>
                <DialogTitle>Test turini yaratish </DialogTitle>
             </DialogHeader>
             <VForm @submit="handleSubmitForm" v-slot="{ errors }">
-               <div class="grid gap-4 mt-4">
-                  <div class="grid gap-2">
+               <div class="grid grid-cols-12 gap-6 items-start mt-4">
+                  <div class="grid gap-2 col-span-12 md:col-span-6">
                      <VField name="title_uz" rules="required" v-model="form.title_uz">
-                        <Label for="schooltype">Test turi nomi o'zbekcha</Label>
+                        <Label for="schooltype">Test turi nomi uz</Label>
                         <Input v-model="form.title_uz" id="title_uz" type="text" placeholder="Test turi uz" />
                         <span class="text-sm text-destructive font-medium">{{ errors.title_uz }}</span>
                      </VField>
                   </div>
-                  <div class="grid gap-2">
-                     <VField name="title_ru" rules="required" v-model="form.title_ru">
-                        <Label for="title_ru">Test turi nomi ruscha</Label>
-                        <Input v-model="form.title_ru" id="title_ru" type="text" placeholder="Test turi ru" />
-                        <span class="text-sm text-destructive font-medium">{{ errors.title_ru }}</span>
+                  <div class="grid gap-2 col-span-12 md:col-span-6">
+                     <VField name="title_uz" rules="required" v-model="form.title_uz">
+                        <Label for="schooltype">Test turi nomi uzc</Label>
+                        <Input v-model="form.title_uz" id="title_uz" type="text" placeholder="Test turi uz" />
+                        <span class="text-sm text-destructive font-medium">{{ errors.title_uz }}</span>
                      </VField>
                   </div>
-                  <div class="grid gap-2">
-                     <VField name="title_en" rules="required" v-model="form.title_en">
-                        <Label for="title_en">Test turi nomi inglizcha</Label>
-                        <Input v-model="form.title_en" id="title_en" type="text" placeholder="Test turi en" />
-                        <span class="text-sm text-destructive font-medium">{{ errors.title_en }}</span>
+                  <div class="grid gap-2 col-span-12 md:col-span-6">
+                     <VField name="title_uz" rules="required" v-model="form.title_uz">
+                        <Label for="schooltype">Test turi nomi kz</Label>
+                        <Input v-model="form.title_uz" id="title_uz" type="text" placeholder="Test turi uz" />
+                        <span class="text-sm text-destructive font-medium">{{ errors.title_uz }}</span>
                      </VField>
                   </div>
-                  <div class="grid gap-2">
+                  <div class="grid gap-2 col-span-12 md:col-span-6">
+                     <VField name="title_uz" rules="required" v-model="form.title_uz">
+                        <Label for="schooltype">Test turi nomi en</Label>
+                        <Input v-model="form.title_uz" id="title_uz" type="text" placeholder="Test turi uz" />
+                        <span class="text-sm text-destructive font-medium">{{ errors.title_uz }}</span>
+                     </VField>
+                  </div>
+                  <div class="grid gap-2 col-span-12 md:col-span-6">
+                     <VField name="title_uz" rules="required" v-model="form.title_uz">
+                        <Label for="schooltype">Test turi nomi ru</Label>
+                        <Input v-model="form.title_uz" id="title_uz" type="text" placeholder="Test turi uz" />
+                        <span class="text-sm text-destructive font-medium">{{ errors.title_uz }}</span>
+                     </VField>
+                  </div>
+                  <div class="grid gap-2 col-span-12 md:col-span-6">
+                     <VField name="test_type" rules="required" v-model="form.test_type">
+                        <Label for="test_type">Test turi </Label>
+                        <Input v-model="form.test_type" id="test_type" type="text" placeholder="dtm" />
+                        <span class="text-sm text-destructive font-medium">{{ errors.test_type }}</span>
+                     </VField>
+                  </div>
+                  <div class="grid gap-2 col-span-12 md:col-span-6">
+                     <VField name="questions_count" rules="required" v-model="form.questions_count">
+                        <Label for="questions_count">Savollar soni</Label>
+                        <NumberField id="questions_count" :default-value="30" :min="10" v-model="form.questions_count">
+                           <NumberFieldContent>
+                              <NumberFieldDecrement />
+                              <NumberFieldInput />
+                              <NumberFieldIncrement />
+                           </NumberFieldContent>
+                        </NumberField>
+                        <span class="text-sm text-destructive font-medium">{{ errors.questions_count }}</span>
+                     </VField>
+                  </div>
+                  <div class="grid gap-2 col-span-12 md:col-span-6">
+                     <VField name="duration" rules="required" v-model="form.duration">
+                        <Label for="duration">Umumiy vaqt</Label>
+                        <NumberField id="duration" :min="30" v-model="form.duration">
+                           <NumberFieldContent>
+                              <NumberFieldDecrement />
+                              <NumberFieldInput />
+                              <NumberFieldIncrement />
+                           </NumberFieldContent>
+                        </NumberField>
+                        <span class="text-sm text-destructive font-medium">{{ errors.duration }}</span>
+                     </VField>
+                  </div>
+                  <div class="grid gap-3 col-span-12">
                      <VField name="user_types" rules="required|requiredArray" v-model="form.user_types">
                         <Label for="user_types">Tegishli foydalanuvchi turini tanlang</Label>
                         <div class="flex flex-wrap gap-4">
@@ -124,6 +187,12 @@ const handleSubmitForm = async () => {
                         </div>
                         <span class="text-sm text-destructive font-medium">{{ errors.user_types }}</span>
                      </VField>
+                  </div>
+                  <div class="grid gap-2 col-span-12 justify-end">
+                     <div class="flex items-center space-x-2">
+                        <Switch id="status" v-model:checked="form.status" />
+                        <Label for="status">Test turi faolligi</Label>
+                     </div>
                   </div>
                </div>
                <div class="flex justify-end mt-4">
