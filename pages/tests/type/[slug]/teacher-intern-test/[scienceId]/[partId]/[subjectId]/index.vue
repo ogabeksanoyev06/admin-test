@@ -73,16 +73,16 @@
 
 <script setup>
 import { useRoute } from 'vue-router';
-import { useTestsStore } from '@/stores/test.js';
+import { useSciencesStore } from '@/stores/sciences.js';
 import { useCustomToast } from '@/composables/useCustomToast.js';
 
 const route = useRoute();
 
-const testsStore = useTestsStore();
+const scienceStore = useSciencesStore();
 
-const { createTest } = testsStore;
+const { updateSubjectById } = scienceStore;
 
-const { loading } = storeToRefs(testsStore);
+const { loading } = storeToRefs(scienceStore);
 
 const { showToast } = useCustomToast();
 
@@ -119,14 +119,11 @@ const handleSubmitForm = async () => {
 
    try {
       const testData = {
-         test_type: route.params.slug,
-         subject: route.params.scienceId,
          part: route.params.partId,
-         theme: rawTests.subjectId,
-         banner_photo: rawTests.banner_photo,
+         // banner_photo: rawTests.banner_photo,
          questions: prepareQuestions(prepareMathView(text.value))
       };
-      const response = await createTest(testData);
+      const response = await updateSubjectById(route.params.subjectId, testData);
       if (response.status === 'success') {
          showToast("Test muvaffaqiyatli qo'shildi!", 'success');
          resetForm();
