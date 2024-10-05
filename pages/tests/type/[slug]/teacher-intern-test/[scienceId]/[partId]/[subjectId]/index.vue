@@ -3,12 +3,11 @@
       <div class="flex items-center justify-between">
          <h1 class="text-lg font-medium md:text-2xl">Stajor o'qituvchilar uchun test yaratish bo'limi</h1>
       </div>
-      {{ route }}
       <div class="flex-1 rounded-lg border border-dashed shadow-sm p-4">
          <VForm @submit="handleSubmitForm" v-slot="{ errors }">
             <div class="grid items-start grid-cols-12 gap-4">
                <div class="grid gap-2 col-span-12">
-                  <VField name="questions" rules="required" v-model="text">
+                  <VField name="mathView">
                      <Label class="flex items-center justify-between">
                         Savollarni kiriting
                         <div class="flex items-center space-x-2">
@@ -16,10 +15,11 @@
                            <Label for="mathView">Matematik ko'rish</Label>
                         </div>
                      </Label>
-                     <Textarea
-                        size="3"
-                        class="min-h-[400px]"
-                        placeholder="Question 1
+                     <VField name="questions" rules="required" v-model="text">
+                        <Textarea
+                           size="3"
+                           class="min-h-[400px]"
+                           placeholder="Question 1
  ====
  Variant 1
  ====
@@ -30,14 +30,15 @@
  Variant 4
  ++++
  Question 2"
-                        v-model="text"
-                     />
+                           v-model="text"
+                        />
+                     </VField>
                      <code> Savollar togri ekanini tekshirish uchun Matematik ko'rishni yoqing </code>
                      <span class="text-sm text-destructive font-medium">{{ errors.questions }}</span>
                   </VField>
                </div>
             </div>
-            <Button type="submit" class="mt-3" :disabled="loading">
+            <Button type="submit" class="mt-3" :disabled="loading || !mathView">
                <svg
                   xmlns="http://www.w3.org/2000/svg"
                   xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -114,7 +115,7 @@ const handleSubmitForm = async () => {
          part: route.params.partId,
          theme: rawTests.subjectId,
          banner_photo: rawTests.banner_photo,
-         questions: rawTests.questions
+         questions: prepareQuestions(prepareMathView(text.value))
       };
       const response = await createTest(testData);
       if (response.status === 'success') {
