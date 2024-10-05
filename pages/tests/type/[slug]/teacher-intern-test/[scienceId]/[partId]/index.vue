@@ -4,6 +4,7 @@
           <h1 class="text-lg font-medium md:text-2xl">Mavzular ro'yxati</h1>
           <ModalTestSubjectCreate :partId="partId" @subject-added="handleAddSubject" />
        </div>
+       {{route}}
        <div class="flex-1 rounded-lg border border-dashed shadow-sm p-4">
           <div class="rounded-lg border">
              <Table>
@@ -23,7 +24,7 @@
                       <TableCell> {{ item.part?.subject?.name_uz }} </TableCell>
                       <TableCell> {{ item.part?.name_uz }} </TableCell>
                       <TableCell class="font-medium">
-                         <NuxtLink :to="`/tests/type/${route.params.slug}/teacher-intern-test/${route.params.parts}/${route.params.subject}/${item._id}`" class="text-primary">
+                         <NuxtLink :to="`/tests/type/${route.params.slug}/teacher-intern-test/${route.params.scienceId}/${route.params.partId}/${item._id}`" class="text-primary">
                             {{ item?.name_uz }}
                          </NuxtLink>
                       </TableCell>
@@ -47,7 +48,7 @@
  const route = useRoute();
  const scienceStore = useSciencesStore();
  
- const partId = route.params.parts;
+ const partId = route.params.partId;
  
  const { getSubjectSectionById } = scienceStore;
  

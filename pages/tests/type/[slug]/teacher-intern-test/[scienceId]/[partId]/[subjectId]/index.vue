@@ -110,9 +110,9 @@ const handleSubmitForm = async () => {
    try {
       const testData = {
          test_type: route.params.slug,
-         subject: route.params.parts,
-         part: route.params.subject,
-         theme: rawTests.tests,
+         subject: route.params.scienceId,
+         part: route.params.partId,
+         theme: rawTests.subjectId,
          banner_photo: rawTests.banner_photo,
          questions: rawTests.questions
       };
