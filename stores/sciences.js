@@ -31,6 +31,18 @@ export const useSciencesStore = defineStore('sciences', () => {
       }
    };
 
+   const getClassNumberSciences = async (id) => {
+      try {
+         loading.value = true;
+         const response = await api.patch(`/api/superadmin/tests/subjects/${id}`);
+         return response.data;
+      } catch (error) {
+         console.log(error);
+      } finally {
+         loading.value = false;
+      }
+   };
+
    const getScienceById = async (id) => {
       try {
          loading.value = true;
@@ -179,6 +191,18 @@ export const useSciencesStore = defineStore('sciences', () => {
       }
    };
 
+   const getSubjectById = async (id) => {
+      try {
+         loading.value = true;
+         const response = await api.get(`/api/superadmin/tests/theme/${id}`);
+         return response.data;
+      } catch (error) {
+         console.log(error);
+      } finally {
+         loading.value = false;
+      }
+   };
+
    const getSubjectSectionById = async (id) => {
       try {
          loading.value = true;
@@ -219,6 +243,7 @@ export const useSciencesStore = defineStore('sciences', () => {
       loading,
       createSciences,
       getSciences,
+      getClassNumberSciences,
       getScienceById,
       deleteScienceById,
       updateScienceById,
@@ -226,6 +251,7 @@ export const useSciencesStore = defineStore('sciences', () => {
 
       createSubjects,
       getSubjects,
+      getSubjectById,
       getSubjectSectionById,
       deleteSubjectById,
       updateSubjectById,

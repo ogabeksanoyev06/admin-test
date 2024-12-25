@@ -49,8 +49,6 @@ const handleSubmitForm = async () => {
          form.name_uz = '';
          isOpen.value = false;
          showToast("Fan muvaffaqiyatli o'zgartirildi!", 'success');
-      } else {
-         showToast("Noma'lum muammo yuz berdi. Iltimos, qayta urinib ko'ring.", 'error');
       }
    } catch (error) {
       console.log(error);

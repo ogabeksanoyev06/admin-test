@@ -37,19 +37,15 @@
                   <AccordionContent class="pb-0">
                      <NuxtLink to="/tests/sciences" class="flex px-4 py-2 hover:bg-muted rounded"> Fanlar </NuxtLink>
                      <NuxtLink to="/schools" class="flex px-4 py-2 hover:bg-muted rounded"> Maktablar</NuxtLink>
+                     <NuxtLink to="/universities" class="flex px-4 py-2 hover:bg-muted rounded"> Universitet va yo'nalishlar</NuxtLink>
+                     <NuxtLink to="/direction-for-science" class="flex px-4 py-2 hover:bg-muted rounded"> Yo'nalishga fanni biriktirish</NuxtLink>
                      <NuxtLink to="/translations" class="flex px-4 py-2 hover:bg-muted rounded"> Tarjimalar </NuxtLink>
                   </AccordionContent>
                </AccordionItem>
                <AccordionItem value="tests" class="space-y-1 border-none">
                   <AccordionTrigger class="px-4 py-2">Testlar</AccordionTrigger>
                   <AccordionContent class="">
-                     <NuxtLink to="/tests/type" class="flex px-4 py-2 hover:bg-muted rounded"> Test turlari </NuxtLink>
-                     <NuxtLink to="/tests/attestation-test" class="flex px-4 py-2 hover:bg-muted rounded"> Attestatsiya testlari </NuxtLink>
-                     <NuxtLink to="/schools" class="flex px-4 py-2 hover:bg-muted rounded"> Stajor o'qituvchi testlari</NuxtLink>
-                     <NuxtLink to="/tests/school-test" class="flex px-4 py-2 hover:bg-muted rounded"> Maktab testlari </NuxtLink>
-                     <NuxtLink to="/tests/blog-test" class="flex px-4 py-2 hover:bg-muted rounded"> Blog testlari </NuxtLink>
-                     <NuxtLink to="/tests/dtm-test" class="flex px-4 py-2 hover:bg-muted rounded"> DTM testlari </NuxtLink>
-                     <NuxtLink to="/schools" class="flex px-4 py-2 hover:bg-muted rounded"> Testlarni tahrirlash </NuxtLink>
+                     <NuxtLink to="/test-types" class="flex px-4 py-2 hover:bg-muted rounded"> Test turlari </NuxtLink>
                   </AccordionContent>
                </AccordionItem>
             </Accordion>

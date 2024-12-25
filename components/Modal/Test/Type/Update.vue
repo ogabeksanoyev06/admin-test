@@ -31,7 +31,9 @@ const form = reactive({
    title_ru: '',
    title_en: '',
    photo_url: 'https://cdn.talimpro.uz/43cf0da0-62aa-11ef-849f-e379d8ea36c6.png',
-   user_types: []
+   user_types: [],
+   questions_count: 0,
+   duration: 0
 });
 
 const handleChange = (itemId, checked) => {
@@ -56,6 +58,8 @@ const testTypeById = async () => {
          form.title_ru = testTypeId.data.title_ru;
          form.title_en = testTypeId.data.title_en;
          form.photo_url = testTypeId.data.photo_url;
+         form.questions_count = testTypeId.data.questions_count;
+         form.duration = testTypeId.data.duration;
          form.user_types = testTypeId.data.user_types.map((item) => item);
          isOpen.value = true;
       }
@@ -143,6 +147,14 @@ const handleSubmitForm = async () => {
                         <Label for="title_en">Test turi nomi inglizcha</Label>
                         <Input v-model="form.title_en" id="title_en" type="text" placeholder="Test turi en" />
                         <span class="text-sm text-destructive font-medium">{{ errors.title_en }}</span>
+                     </VField>
+                  </div>
+
+                  <div class="grid gap-2">
+                     <VField name="questionCount" rules="required" v-model="form.questions_count">
+                        <Label for="questionCount">Savollar soni</Label>
+                        <Input v-model="form.questions_count" id="questionCount" type="number" />
+                        <span class="text-sm text-destructive font-medium">{{ errors.questions_count }}</span>
                      </VField>
                   </div>
                   <div class="grid gap-2">

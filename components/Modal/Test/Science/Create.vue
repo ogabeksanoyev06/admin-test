@@ -5,7 +5,8 @@ import { storeToRefs } from 'pinia';
 import { useSciencesStore } from '@/stores/sciences.js';
 
 const props = defineProps({
-   test_type: String
+   test_type: [String, Number],
+   classId: [String, Number]
 });
 
 const emit = defineEmits(['science-added']);
@@ -29,22 +30,25 @@ const form = reactive({
 
 const handleSubmitForm = async () => {
    try {
-      const response = await createSciences({
+      const payload = {
          name_uz: form.name_uz,
          name_en: form.name_uz,
          name_ru: form.name_uz,
          test_type: form.test_type
-      });
+      };
+      if (props.classId) {
+         payload.class = props.classId;
+      }
+      const response = await createSciences(payload);
       if (response.status === 'success') {
          emit('science-added');
          form.name_uz = '';
          isOpen.value = false;
          showToast("Fan muvaffaqiyatli qo'shildi!", 'success');
-      } else {
-         showToast("Noma'lum muammo yuz berdi. Iltimos, qayta urinib ko'ring.", 'error');
       }
    } catch (error) {
-      console.log(error);
+      console.error('Xatolik yuz berdi:', error);
+      showToast("Xatolik yuz berdi. Iltimos, qayta urinib ko'ring.", 'error');
    }
 };
 </script>
