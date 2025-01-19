@@ -39,34 +39,29 @@ export function prepareQuestions(text) {
             .split('====')
             .map((line) => line.trim());
 
-         // Savol matnini olish
-         const questionText = lines[0];
+         const questionText = lines[0].match(/^(?:<p>)?(.*?)(?:<\/p>)?$/)?.[1].trim() || '';
 
-         // Kerakli shartlarni bajarish
          if (!questionText) {
             throw new Error(`Savol matni bo'sh.`);
          }
-
          if (lines.length < 3) {
             throw new Error(`Savol "${questionText}"da kamida 2 variant bo'lishi kerak.`);
          }
-
-         // Variantlarni olish
          const options = lines.slice(1).map((optionLine) => {
-            // Agar variant @ belgisidan boshlansa xato
-
-            // Agar variant # bilan boshlanmasa, to'g'ri javob emasligini belgilash
             const is_correct = optionLine.startsWith('#');
 
-            // Variantning matnini olib, bo'sh bo'lmaganligini tekshirish
             if (optionLine.trim() === '' || (is_correct && optionLine.length === 1)) {
                throw new Error(`Variant bo'sh bo'lmasligi yoki faqat # dan iborat bo'lmasligi kerak: "${optionLine}".`);
             }
-
-            return { text: optionLine.replace(/^#\s*/, ''), is_correct }; // # belgisini olib tashlab, to'g'ri javoblarni belgilaymiz
+            return {
+               text: optionLine
+                  .replace(/^#\s*/, '')
+                  .replace(/\\item\s*/g, '')
+                  .replace(/\\\\/g, '')
+                  .replace(/<\/?p>/g, ''),
+               is_correct
+            };
          });
-
-         // Faqat bitta to'g'ri javob mavjudligini tekshirish
          const correctAnswers = options.filter((option) => option.is_correct);
          if (correctAnswers.length === 0) {
             throw new Error(`Savolda hech qanday to'g'ri javob mavjud emas: "${questionText}".`);
@@ -86,16 +81,58 @@ export function prepareQuestions(text) {
 
 //
 export function prepareMathView(string) {
-   if (string) {
-      return string
-         .replace(/\$\$(.*?)\$\$/gs, (match) => {
-            // Matematik formulani o'z holida saqlash
-            return match;
-         })
-         .replace(/\\item\s*/g, '') // \item belgilarini olib tashlash
-         .replace(/\\\\/g, ''); // \\ belgilarini olib tashlash
+   if (!string) return '';
+
+   try {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(string, 'text/html');
+      const plainText = doc.body.innerHTML || '';
+
+      return (
+         plainText
+            // Convert base64 images to blob URLs
+            .replace(/<img src="data:image\/(.*?);base64,(.*?)"[^>]*>/g, (match, type, base64Data) => {
+               try {
+                  const blob = base64ToBlob(base64Data, `image/${type}`);
+                  const url = URL.createObjectURL(blob);
+                  return `<img src="${url}" alt="Math content" />`;
+               } catch (error) {
+                  console.error('Error processing image:', error);
+                  return ''; // Return empty string if image processing fails
+               }
+            })
+            // Preserve LaTeX math expressions
+            .replace(/\$\$(.*?)\$\$/gs, (match) => match)
+            // Clean up LaTeX and HTML artifacts
+            .replace(/\\item\s*/g, '') // Remove LaTeX \item commands
+            .replace(/\\\\/g, '') // Remove LaTeX line breaks
+            .replace(/&nbsp;/g, ' ') // Convert non-breaking spaces to regular spaces
+            .replace(/<\s*style[^>]*>[\s\S]*?<\/style>/g, '') // Remove style tags and content
+            .replace(/<\s*script[^>]*>[\s\S]*?<\/script>/g, '')
+      ); // Remove script tags and content
+   } catch (error) {
+      console.error('Error processing math view:', error);
+      return '';
    }
-   return '';
+}
+
+function base64ToBlob(base64Data, contentType) {
+   const byteCharacters = atob(base64Data);
+   const byteArrays = [];
+
+   for (let offset = 0; offset < byteCharacters.length; offset += 512) {
+      const slice = byteCharacters.slice(offset, offset + 512);
+      const byteNumbers = new Array(slice.length);
+
+      for (let i = 0; i < slice.length; i++) {
+         byteNumbers[i] = slice.charCodeAt(i);
+      }
+
+      const byteArray = new Uint8Array(byteNumbers);
+      byteArrays.push(byteArray);
+   }
+
+   return new Blob(byteArrays, { type: contentType });
 }
 
 export const directions = [

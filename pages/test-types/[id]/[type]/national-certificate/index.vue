@@ -20,7 +20,7 @@
                   <TableRow v-for="(item, i) in sciences?.data" :key="i" class="odd:bg-muted/50">
                      <TableCell class="font-medium">{{ i + 1 }} </TableCell>
                      <TableCell>
-                        <NuxtLink :to="`/test-types/${route.params.id}/${route.params.type}/attestation-test/${item._id}`" class="text-primary">
+                        <NuxtLink :to="`/test-types/${route.params.id}/${route.params.type}/national-certificate/${item._id}`" class="text-primary">
                            {{ item.name_uz }}
                         </NuxtLink>
                      </TableCell>

@@ -24,5 +24,6 @@ export default defineNuxtConfig({
    },
    build: {
       transpile: ['vue-toastification', '@vuepic/vue-datepicker']
-   }
+   },
+   webpack: {}
 });

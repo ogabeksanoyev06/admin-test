@@ -2,4 +2,5 @@
 @import './transition.css';
 @import './common.css';
 @import './tailwind.css';
+@import './vue-quill.css';
 @import './katex/styles.css';

@@ -6,10 +6,10 @@
             <ModalUniversityCreate @university-added="handleAddUniversity" />
          </div>
       </div>
-      <div class="flex flex-col gap-2">
+      <!-- <div class="flex flex-col gap-2">
          <Label for="login" class="flex items-center gap-0.5"> Faylni yuklash </Label>
          <BaseFileInput v-model="file" @update:modelValue="handleUpload" />
-      </div>
+      </div> -->
    </div>
    <div class="flex justify-end">
       <Button :disabled="loading" @click="updateDirections" variant="outline">

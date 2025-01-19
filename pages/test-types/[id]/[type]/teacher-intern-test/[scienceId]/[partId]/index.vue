@@ -13,6 +13,7 @@
                      <TableHead>Fan</TableHead>
                      <TableHead>Bo'lim</TableHead>
                      <TableHead>Mavzu</TableHead>
+                     <TableHead> Savollar </TableHead>
                      <TableHead> Yaratilgan </TableHead>
                      <TableHead> Amaliyotlar </TableHead>
                   </TableRow>
@@ -23,10 +24,14 @@
                      <TableCell> {{ item.part?.subject?.name_uz }} </TableCell>
                      <TableCell> {{ item.part?.name_uz }} </TableCell>
                      <TableCell class="font-medium">
-                        <NuxtLink :to="`/test-types/${route.params.id}/${route.params.type}/teacher-intern-test/${route.params.scienceId}/${route.params.partId}/${item._id}`" class="text-primary">
+                        <NuxtLink
+                           :to="`/test-types/${route.params.id}/${route.params.type}/teacher-intern-test/${route.params.scienceId}/${route.params.partId}/${item._id}`"
+                           class="text-primary"
+                        >
                            {{ item?.name_uz }}
                         </NuxtLink>
                      </TableCell>
+                     <TableCell> {{ item.questions?.length }} </TableCell>
                      <TableCell>{{ $dayjs(item.createdAt).format('DD.MM.YYYY HH:mm:ss') }} </TableCell>
                      <TableCell class="flex flex-wrap gap-2">
                         <ModalTestSubjectUpdate :subjectId="item._id" :partId="partId" @subject-updated="handleUpdateSubject" />

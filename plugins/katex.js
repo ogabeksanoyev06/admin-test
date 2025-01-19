@@ -10,7 +10,14 @@ export default defineNuxtPlugin((nuxtApp) => {
             { left: '$$', right: '$$', display: true },
             { left: '$', right: '$', display: false },
             { left: '\\(', right: '\\)', display: false },
-            { left: '\\[', right: '\\]', display: true }
+            { left: '\\[', right: '\\]', display: true },
+            { left: '\\begin{equation}', right: '\\end{equation}', display: true },
+            { left: '\\begin{align}', right: '\\end{align}', display: true },
+            { left: '\\begin{align*}', right: '\\end{align*}', display: true },
+            { left: '\\begin{eqnarray}', right: '\\end{eqnarray}', display: true },
+            { left: '\\begin{eqnarray*}', right: '\\end{eqnarray*}', display: true },
+            { left: '\\[', right: '\\]', display: true },
+            { left: '\\(', right: '\\)', display: false }
          ],
          throwOnError: false,
          macros: {

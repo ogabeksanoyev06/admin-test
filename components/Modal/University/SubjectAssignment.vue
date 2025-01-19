@@ -52,7 +52,7 @@ const handleSubmitForm = async () => {
          emit('university-updated');
       }
    } catch (error) {
-      showToast(error.response?.data?.message || 'Fan biriktirishda xatolik yuz berdi', 'error');
+      showToast(error.response?.data?.message , 'error');
    } finally {
       loading.value = false;
    }

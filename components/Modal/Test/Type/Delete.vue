@@ -5,7 +5,7 @@ import { useCustomToast } from '@/composables/useCustomToast.js';
 const emit = defineEmits(['testType-deleted']);
 
 const props = defineProps({
-   testTypeId: String
+   testTypeId: [String, Number]
 });
 
 const { showToast } = useCustomToast();

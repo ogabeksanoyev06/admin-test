@@ -21,7 +21,7 @@ const confirmDelete = async () => {
    try {
       const response = await deleteUniversityById(props.universityId);
       if (response?.status === 'success') {
-         showToast("Universitet muvaffaqiyatli o'chirildi.", 'success');
+         // showToast("Universitet muvaffaqiyatli o'chirildi.", 'success');
          emit('university-deleted');
          isOpen.value = false;
       }

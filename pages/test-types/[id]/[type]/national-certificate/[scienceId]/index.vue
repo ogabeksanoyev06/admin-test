@@ -23,7 +23,7 @@
                         {{ item.subject?.name_uz }}
                      </TableCell>
                      <TableCell class="font-medium">
-                        <NuxtLink :to="`/test-types/${route.params.id}/${route.params.type}/attestation-test/${route.params.scienceId}/${item._id}`" class="text-primary">
+                        <NuxtLink :to="`/test-types/${route.params.id}/${route.params.type}/national-certificate/${route.params.scienceId}/${item._id}`" class="text-primary">
                            {{ item.name_uz }}
                         </NuxtLink>
                      </TableCell>
